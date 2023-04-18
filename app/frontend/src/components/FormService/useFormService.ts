@@ -49,7 +49,6 @@ export const useFormService = ({
     };
 
     const { status } = await api.post("/service/start", bodyData);
-    console.log("🚀 ~ file: useFormService.ts:57 ~ onSubmit ~ status:", status);
     if (status === 201) {
       router.push(`/service/contributor/${contributorId}`);
     }

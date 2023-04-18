@@ -27,7 +27,6 @@ const client: React.FC<ClientProps> = ({ cars }) => {
   const { control, watch } = useForm<FormClientProps>({
     resolver: zodResolver(FormClientRegisterSchema),
   });
-  console.log("🚀 ~ file: index.tsx:26 ~ watch:", watch());
 
   const lisBoxOptionsCar = cars.map((car) => {
     return {

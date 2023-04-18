@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Client {
+  id String @id @default(uuid())
+
+  name String
+
+  car Car? @relation(fields: [carId], references: [id], onDelete: SetNull)
+  carId   String?
+
+  Service Service[]
+}
+
+model Car {
+  id String @id @default(uuid())
+
+  brand  String
+  model  String
+
+  owrne Client[]
+}
+
+model Contributor {
+  id String @id @default(uuid())
+
+  name String
+
+  service Service[]
+}
+
+model Service {
+  id String @id @default(uuid())
+
+  contributor   Contributor @relation(fields: [contributorId], references: [id])
+  contributorId String
+
+  client   Client @relation(fields: [clientId], references: [id])
+  clientId String
+
+  initialService DateTime  @default(now())
+  finishService  DateTime?
+
+  PartsOnService PartsOnService[]
+}
+
+model Part {
+  id String @id @default(uuid())
+
+  name  String
+  price Float
+
+  PartsOnService PartsOnService[]
+}
+
+model PartsOnService {
+  id        String  @id @default(uuid())
+  service   Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  part      Part    @relation(fields: [partId], references: [id])
+  serviceId String
+  partId    String
+}

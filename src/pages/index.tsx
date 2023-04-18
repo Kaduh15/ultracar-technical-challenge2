@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { QrReader, OnResultFunction } from "react-qr-reader";
-import { useRouter } from 'next/navigation'
+import { QrReader, OnResultFunction, } from "react-qr-reader";
+import { useRouter } from 'next/router'
 
 export default function Home() {
   const router = useRouter()
@@ -12,7 +11,6 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      Hello World
       <QrReader
         scanDelay={5000}
         onResult={handleQr}

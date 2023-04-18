@@ -12,19 +12,15 @@ interface HomeProps {
 export default function Home({ client, contributors, parts }: HomeProps) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <FormService
-        client={client}
-        contributors={contributors}
-        parts={parts}
-      />
+      <FormService client={client} contributors={contributors} parts={parts} />
     </main>
   );
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { data: client } = await api.get(`/clients/${query.clientId}`);
-  const { data: contributors } = await api.get(`/contributors`);
-  const { data: parts } = await api.get(`/parts`);
+  const { data: client } = await api.get(`/client/${query.clientId}`);
+  const { data: contributors } = await api.get(`/contributor`);
+  const { data: parts } = await api.get(`/part`);
 
   return {
     props: {

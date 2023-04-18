@@ -4,17 +4,12 @@ import { FormProps, schemaFormService } from "./schemaFormService";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { api } from "@/service/api";
+import { selectOptions } from "@/utils/selecOptions";
 
 type useFormServiceProps = {
   client: TClient;
   parts: TPart[];
   contributors: TContributor[];
-};
-
-const selectOption = (list: { id: number; name: string }[]) => {
-  return list.map(({ id, name }) => {
-    return { value: id, label: name };
-  });
 };
 
 export const useFormService = ({
@@ -60,8 +55,8 @@ export const useFormService = ({
     }
   };
 
-  const selectContributors = selectOption(contributors);
-  const selectParts = selectOption(parts);
+  const selectContributors = selectOptions(contributors, ["id", "name"]);
+  const selectParts = selectOptions(parts, ["id", "name"]);
 
   return {
     addPart,

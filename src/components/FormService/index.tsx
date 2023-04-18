@@ -2,8 +2,9 @@ import { TClient, TContributor, TPart } from "@/types";
 import React from "react";
 import { Button } from "primereact/button";
 import { useFormService } from "./useFormService";
-import DropdownController from "../DropdownController";
-import InputNumberController from "../InputNumberController";
+import {DropdownController} from "../FormController/";
+import {InputNumberController} from "../FormController/";
+
 
 type FormServiceProps = {
   client: TClient;

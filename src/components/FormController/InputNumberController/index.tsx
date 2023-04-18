@@ -7,7 +7,7 @@ type InputNumberControllerProps = {
   nameControl: string,
 } & InputNumberProps
 
-const InputNumberController: React.FC<InputNumberControllerProps> = ({
+export const InputNumberController: React.FC<InputNumberControllerProps> = ({
   control, nameControl, ...props
 }) => {
   return (

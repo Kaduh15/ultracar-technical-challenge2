@@ -9,7 +9,7 @@ type MultiSelectControllerProps = {
   nameControl: string,
 } & MultiSelectProps
 
-const MultiSelectController: React.FC<MultiSelectControllerProps> = ({
+export const MultiSelectController: React.FC<MultiSelectControllerProps> = ({
   control, options, nameControl,...props
 }) => {
   return (

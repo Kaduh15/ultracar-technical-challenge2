@@ -9,7 +9,7 @@ type DropdownControllerProps = {
   nameControl: string;
 } & DropdownProps;
 
-const DropdownController: React.FC<DropdownControllerProps> = ({
+export const DropdownController: React.FC<DropdownControllerProps> = ({
   control,
   options,
   nameControl,

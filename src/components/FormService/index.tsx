@@ -1,10 +1,9 @@
 import { TClient, TContributor, TPart } from "@/types";
 import React from "react";
-import { MultiSelect } from "primereact/multiselect";
-import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
-import { Controller, useForm } from "react-hook-form";
 import { useFormService } from "./useFormService";
+import DropdownController from "../DropdownController";
+import InputNumberController from "../InputNumberController";
 
 type FormServiceProps = {
   client: TClient;
@@ -17,7 +16,16 @@ const FormService: React.FC<FormServiceProps> = ({
   contributors = [],
   parts = [],
 }) => {
-  const { control, errors, handleSubmit, onSubmit, selectContributors, selectParts } = useFormService({
+  const {
+    addPart,
+    control,
+    errors,
+    fields,
+    handleSubmit,
+    onSubmit,
+    selectContributors,
+    selectParts,
+  } = useFormService({
     client,
     parts,
     contributors,
@@ -35,34 +43,43 @@ const FormService: React.FC<FormServiceProps> = ({
         </span>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-        <Controller
-          name="contributor"
+        <DropdownController
           control={control}
-          rules={{ required: true }}
-          render={({ field }) => (
-            <Dropdown
-              {...field}
-              options={selectContributors}
-              optionLabel="label"
-              placeholder="Select contributor"
-              className="w-full md:w-20rem"
-            />
-          )}
+          options={selectContributors}
+          nameControl="contributor"
         />
         {!!errors?.contributor && <span>{errors.contributor.message}</span>}
-        <Controller
-          name="parts"
-          control={control}
-          render={({ field }) => (
-            <MultiSelect
-              id={field.name}
-              {...field}
-              options={selectParts}
-              optionLabel="label"
-              placeholder="Select Parts"
-            />
-          )}
-        />
+
+        <label
+          htmlFor="parts"
+          className="flex items-center justify-between gap-4"
+        >
+          Peças
+          <Button type="button" onClick={addPart} size="small">
+            Adicionar
+          </Button>
+        </label>
+        <div>
+          {fields.map((field, index) => {
+            return (
+              <div key={field.id}>
+                <DropdownController
+                  control={control}
+                  nameControl={`parts.${index}.partId`}
+                  filter
+                  options={selectParts}
+                  optionLabel="label"
+                  optionValue="value"
+                />
+                <InputNumberController
+                  showButtons
+                  control={control}
+                  nameControl={`parts.${index}.quantity`}
+                />
+              </div>
+            );
+          })}
+        </div>
 
         <Button type="submit">Iniciar Serviço</Button>
       </form>

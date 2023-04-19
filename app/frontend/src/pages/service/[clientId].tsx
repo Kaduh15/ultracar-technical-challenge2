@@ -18,15 +18,23 @@ export default function Home({ client, contributors, parts }: HomeProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { data: client } = await api.get(`/client/${query.clientId}`);
-  const { data: contributors } = await api.get(`/contributor`);
-  const { data: parts } = await api.get(`/part`);
+  try {
+    const { data: client } = await api.get(`/client/${query.clientId}`);
+    const { data: contributors } = await api.get(`/contributor`);
+    const { data: parts } = await api.get(`/part`);
+
+    return {
+      props: {
+        client,
+        contributors,
+        parts,
+      },
+    };
+  } catch (error) {
+    console.log(error);
+  }
 
   return {
-    props: {
-      client,
-      contributors,
-      parts,
-    },
+    props: {},
   };
 };

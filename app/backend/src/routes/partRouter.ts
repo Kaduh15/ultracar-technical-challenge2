@@ -4,8 +4,6 @@ import "express-async-errors";
 import { PartController } from "../controllers";
 import { PartService } from "../services";
 import { prisma } from "../lib/prisma";
-import bodyMiddleware from "../middlewares/body.middleware";
-import { PartCreateOneSchema, PartUpsertSchema } from "../../prisma/generated/schemas";
 
 const partService = new PartService(prisma);
 const partController = new PartController(partService);

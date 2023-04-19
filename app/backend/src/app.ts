@@ -1,5 +1,5 @@
 import express from "express";
-import errorMiddleware from "./middlewares/error.middleware";
+import { demoLogger, errorMiddleware } from "./middlewares";
 import cors from "cors";
 import {
   carRouter,
@@ -7,7 +7,7 @@ import {
   contributorRouter,
   serviceRouter,
   partRouter,
-} from "./routes/index";
+} from "./routes";
 
 import "express-async-errors";
 
@@ -25,11 +25,7 @@ class App {
   }
 
   private config(): void {
-    this.app.use((req, _, next) => {
-      console.log("acesse", req.originalUrl);
-
-      next();
-    });
+    this.app.use(demoLogger);
 
     this.app.use(cors());
     const accessControl: express.RequestHandler = (_req, res, next) => {

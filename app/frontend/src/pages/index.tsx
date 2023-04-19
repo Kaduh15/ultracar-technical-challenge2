@@ -15,7 +15,8 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex h-screen flex-col items-center justify-center bg-blue-950">
+      <h1 className="font-bold text-white">Pode Escanear o QR Code do Cliente</h1>
       <QrReader
         scanDelay={500}
         onResult={handleQr}

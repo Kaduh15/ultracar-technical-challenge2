@@ -5,8 +5,17 @@
   "main": "src/service.ts",
   "scripts": {
     "start": "tsx .",
-    "start:dev": "tsx watch .",
-    "build": "tsup src"
+    "start:dev": "npm run db && tsx watch .",
+    "build": "tsup src",
+    "db:migrate": "prisma migrate dev",
+    "db:generate": "prisma generate",
+    "db:reset": "prisma migrate reset --force",
+    "db:seed": "prisma db seed",
+    "db": "npm run db:reset && npm run db:migrate"
+  },
+  "prisma": {
+    "schema": "./prisma/schema.prisma",
+    "seed": "tsx ./prisma/seed.ts"
   },
   "keywords": [],
   "author": "",

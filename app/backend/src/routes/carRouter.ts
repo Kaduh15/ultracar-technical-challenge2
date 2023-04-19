@@ -4,8 +4,6 @@ import "express-async-errors";
 import { CarController } from "../controllers";
 import { CarService } from "../services";
 import { prisma } from "../lib/prisma";
-import bodyMiddleware from "../middlewares/body.middleware";
-import { CarCreateOneSchema, CarUpsertSchema } from "../../prisma/generated/schemas";
 
 const carService = new CarService(prisma);
 const carController = new CarController(carService);
@@ -20,6 +18,6 @@ carRouter.post("/", (req, res) =>
   carController.create(req, res)
 );
 
-carRouter.put("/:id", bodyMiddleware(CarUpsertSchema), (req, res) =>
+carRouter.put("/:id", (req, res) =>
   carController.update(req, res)
 );

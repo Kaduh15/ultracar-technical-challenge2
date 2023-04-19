@@ -1,0 +1,16 @@
+{
+  "name": "ultracar-technical-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "cd ./app/frontend && npm install && cd ../backend && npm install",
+    "compose:dev": "docker-compose up -d --build --remove-orphans",
+    "compose:down": "docker-compose down",
+    "frontend:dev": "cd ./app/frontend && npm run dev",
+    "backend:dev": "cd ./app/backend && npm run start:dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

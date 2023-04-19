@@ -1,4 +1,4 @@
-import { api } from "@/service/api";
+
 import { TContributor } from "@/types";
 import { GetServerSideProps } from "next";
 import { ListBox } from "primereact/listbox";
@@ -30,11 +30,9 @@ const contributor: React.FC<ContributorProps> = ({ contributorData }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { data } = await api.get(`/contributor/${query?.contributorId}`);
 
   return {
     props: {
-      contributorData: data,
     },
   };
 };

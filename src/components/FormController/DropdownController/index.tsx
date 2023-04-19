@@ -19,6 +19,12 @@ export const DropdownController: React.FC<DropdownControllerProps> = ({
     <Controller
       name={nameControl}
       control={control}
+      rules={{
+        required: {
+          value: true,
+          message: "Campo obrigatório",
+        },
+      }}
       render={({ field }) => (
         <Dropdown
           {...props}

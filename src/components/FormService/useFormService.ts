@@ -3,8 +3,8 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { FormProps, schemaFormService } from "./schemaFormService";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { selectOptions } from "@/utils/selectOptions";
 import { api } from "@/service/api";
-import { selectOptions } from "@/utils/selecOptions";
 
 type useFormServiceProps = {
   client: TClient;

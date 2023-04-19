@@ -1,0 +1,73 @@
+{
+  "clients": [
+    {
+      "id": 1,
+      "name": "John",
+      "car": "Fox 2021"
+    },
+    {
+      "id": 2,
+      "name": "Mary",
+      "car": "Gol 2020"
+    },
+    {
+      "id": 3,
+      "name": "Peter",
+      "car": "Celta 2019"
+    }
+  ],
+  "contributors": [
+    {
+      "id": 1,
+      "name": "John",
+      "services": [
+        {
+          "client": {
+            "id": 2,
+            "name": "Mary",
+            "car": "Gol 2020"
+          },
+          "parts": [
+            {
+              "partId": 3,
+              "quantity": 2,
+              "name": "Filtro"
+            },
+            {
+              "partId": 4,
+              "quantity": 2,
+              "name": "Bateria da buzina"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "José",
+      "services": []
+    }
+  ],
+  "parts": [
+    {
+      "id": 1,
+      "name": "Pneu",
+      "price": 100
+    },
+    {
+      "id": 2,
+      "name": "Óleo",
+      "price": 50
+    },
+    {
+      "id": 3,
+      "name": "Filtro",
+      "price": 30
+    },
+    {
+      "id": 4,
+      "name": "Bateria da buzina",
+      "price": 15.75
+    }
+  ]
+}

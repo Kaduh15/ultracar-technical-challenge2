@@ -3,17 +3,25 @@ import React from "react";
 import { Controller } from "react-hook-form";
 
 type InputNumberControllerProps = {
-  control: any,
-  nameControl: string,
-} & InputNumberProps
+  control: any;
+  nameControl: string;
+} & InputNumberProps;
 
 export const InputNumberController: React.FC<InputNumberControllerProps> = ({
-  control, nameControl, ...props
+  control,
+  nameControl,
+  ...props
 }) => {
   return (
     <Controller
       name={nameControl}
       control={control}
+      rules={{
+        required: {
+          value: true,
+          message: "Campo obrigatório",
+        },
+      }}
       render={({ field }) => (
         <InputNumber
           {...props}

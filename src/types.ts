@@ -5,33 +5,17 @@ export type TContributor = {
 }
 
 export type TService = {
-  id: string;
-  contributorId?: string;
   clientId?: string;
-  initialService: string;
-  finishService: string | undefined;
+  initialService: Date;
+  finishService: Date | undefined;
   client: TClient;
-  PartsOnService: TPartsOnService[];
+  Parts: TPart[]
 }
 
 export type TClient = {
   id: string;
   name: string;
-  carId: string;
-  car: TCar;
-}
-
-export type TCar = {
-  id: string;
-  brand: string;
-  model: string;
-}
-
-export type TPartsOnService = {
-  id: string;
-  serviceId: string;
-  partId: string;
-  part: TPart;
+  car: string;
 }
 
 export type TPart = {
